@@ -1,6 +1,5 @@
-package Animal_shelter;
+package Animal_shelter.model;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Pets extends Animals{
 
@@ -9,14 +8,13 @@ public class Pets extends Animals{
     //endregion
 
     //region Constructor
-    public Pets(String type) {
-        super(type);
+    public Pets() {
     }
     //endregion
 
     //region Methods
-    public void addNewPetAnimal(Pets animal){ //Метод для добавления новых домашних животных.
-        this.listAnimal.add(animal);
+    public void addNewPetAnimal(Pets animal) {
+        listAnimal.add(animal);
     }
 
     public void printAll(){
@@ -25,5 +23,4 @@ public class Pets extends Animals{
         }
     }
     //endregion
-
 }
