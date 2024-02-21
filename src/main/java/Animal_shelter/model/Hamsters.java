@@ -41,9 +41,15 @@ public class Hamsters extends Pets{
         this.commands.add(command);
     }
 
-    public void printAllCommands() {
-        for (String com : this.commands) {
-            System.out.print(com + ' ');
+    public void printAllCommands(){
+        if(!this.commands.isEmpty()){
+            System.out.print("\n Животное знает следующие команды: ");
+            for (String com:this.commands) {
+                System.out.print(com +' ');
+            }
+            System.out.println();
+        }else{
+            System.out.println("\nСписок команд пуст!\n");
         }
     }
 

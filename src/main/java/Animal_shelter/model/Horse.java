@@ -18,32 +18,20 @@ public class Horse extends PackAnimals {
     }
     //endregion
 
-    //region getter and setter
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDateOfBirthday() {
-        return dateOfBirthday;
-    }
-
-    public void setDateOfBirthday(String dateOfBirthday) {
-        this.dateOfBirthday = dateOfBirthday;
-    }
-    //endregion
-
     //region methods
     public void addCommand(String command) {
         this.commands.add(command);
     }
 
-    public void printAllCommands() {
-        for (String com : this.commands) {
-            System.out.print(com + ' ');
+    public void printAllCommands(){
+        if(!this.commands.isEmpty()){
+            System.out.print("\n Животное знает следующие команды: ");
+            for (String com:this.commands) {
+                System.out.print(com +' ');
+            }
+            System.out.println();
+        }else{
+            System.out.println("\nСписок команд пуст!\n");
         }
     }
 

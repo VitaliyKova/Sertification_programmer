@@ -18,23 +18,52 @@ public class View {
 
     //region Requests
     private String inputName(){
-        System.out.println("Введите кличку животного");
-        return scanner.nextLine();
+        boolean flag = true;
+        while (flag) {
+            System.out.print("\nВведите кличку животного: ");
+            String value = scanner.nextLine();
+            if (value.isEmpty()) {
+                System.out.println("\nВы ничего не ввели!\n");
+            } else {
+                flag = false;
+                return value;
+            }
+        }
+        return null;
     }
 
-    private String inputDateOfBirth(){
-        System.out.println("Введите рождения животного");
-        return scanner.nextLine();
+    private String inputDateOfBirth() {
+        boolean flag = true;
+        while (flag) {
+            System.out.print("\nВведите дату рождения животного: ");
+            String value = scanner.nextLine();
+            if (value.isEmpty()) {
+                System.out.println("\nВы ничего не ввели!\n");
+            } else {
+                flag = false;
+                return value;
+            }
+        }
+        return null;
     }
-
 
     private String inputNewCommands(){
-        System.out.println("Введите новую команду для животного");
-        return scanner.nextLine();
+        boolean flag = true;
+        while (flag) {
+            System.out.print("\nВведите новую команду для животного: ");
+            String value = scanner.nextLine();
+            if (value.isEmpty()) {
+                System.out.println("\nВы ничего не ввели!\n");
+            } else {
+                flag = false;
+                return value;
+            }
+        }
+        return null;
     }
 
     private String choosingAnimal(){
-        System.out.println("Выберите категорию для животного, которого вы хотите добавить из доступных!\n");
+        System.out.println("\nВыберите категорию животного из доступных!\n");
         System.out.print("Ваш выбор -> ");
         return scanner.nextLine();
     }
@@ -75,9 +104,36 @@ public class View {
                     }
                     break;
                 }
+                case "2":{
+                    controller.printAllAnimals();
+                    break;
+                }
+                case "3":{
+                    System.out.println(listAnimals);
+                    String result = choosingAnimal();
+                    boolean flagIn = result.equals("7");
+                    if(flagIn) break;
+                    else {
+                        controller.printCommands(result,inputName());
+                    }
+                    break;
+                }
+                case "4":{
+                    System.out.println(listAnimals);
+                    String result = choosingAnimal();
+                    boolean flagIn = result.equals("7");
+                    if(flagIn) break;
+                    else {
+                        controller.newComand(result,inputName(),inputNewCommands());
+                    }
+                    break;
+                }
                 case "5":{
                     flag = false;
                     break;
+                }
+                default:{
+                    System.out.println("\nНекорректно введен номер пункта!\n");
                 }
             }
         }

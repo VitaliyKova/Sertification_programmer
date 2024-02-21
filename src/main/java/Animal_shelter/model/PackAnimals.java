@@ -25,13 +25,17 @@ public class PackAnimals extends Animals{
     //endregion
 
     //region methods
-    public void addNewPetAnimal(PackAnimals animal) {
+    public void addNewPackAnimal(PackAnimals animal) {
         listAnimal.add(animal);
     }
 
     public void printAll(){
-        for (PackAnimals var : this.listAnimal) {
-            System.out.println(var.toString());
+        if(this.listAnimal.isEmpty()){
+            System.out.println("      Список пуст!\n");
+        }else{
+            for (PackAnimals var : this.listAnimal) {
+                System.out.println(var.toString());
+            }
         }
     }
     //endregion

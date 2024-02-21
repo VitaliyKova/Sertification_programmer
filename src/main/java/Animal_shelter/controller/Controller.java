@@ -1,9 +1,9 @@
 package Animal_shelter.controller;
-import Animal_shelter.model.Dogs;
-import Animal_shelter.model.PackAnimals;
-import Animal_shelter.model.Pets;
+import Animal_shelter.model.*;
 
-public class Controller{
+import java.lang.reflect.Method;
+
+public class Controller {
 
     //region fields
     PackAnimals packAnimals = new PackAnimals();
@@ -17,30 +17,268 @@ public class Controller{
 
     //endregion
 
-    //region addPets Animals
-    public void addAnimals(String type,String name, String birth) {      /* 1 -> СОБАКА
+    //region Methods
+
+    //region MethodAddAnimals
+    public void addAnimals(String type, String name, String birth) {      /* 1 -> СОБАКА
                                                                             2 -> КОТ
                                                                             3 -> ХОМЯК
                                                                             4 -> ВЕРБЛЮД
                                                                             5 -> ОСЁЛ
                                                                             6 -> ЛОШАДЬ */
-        switch (type){
-            case "1":{
-                pets.addNewPetAnimal(new Dogs(name,birth));
+        switch (type) {
+            case "1": {
+                pets.addNewPetAnimal(new Dogs(name, birth));
+                System.out.println();
+                System.out.println(name + " добавлен в ваш питомник!\n");
                 break;
             }
-            case "2":{break;}
-            case "3":{break;}
-            case "4":{break;}
-            case "5":{break;}
-            case "6":{break;}
-            default:{
-                System.out.println(type + " - Такая категория не существует");
+            case "2": {
+                pets.addNewPetAnimal(new Cats(name, birth));
+                System.out.println();
+                System.out.println(name + " добавлен в ваш питомник!\n");
+                break;
+            }
+            case "3": {
+                pets.addNewPetAnimal(new Hamsters(name, birth));
+                System.out.println();
+                System.out.println(name + " добавлен в ваш питомник!\n");
+                break;
+            }
+            case "4": {
+                packAnimals.addNewPackAnimal(new Camels(name, birth));
+                System.out.println();
+                System.out.println(name + " добавлен в ваш питомник!\n");
+                break;
+            }
+            case "5": {
+                packAnimals.addNewPackAnimal(new Donkeys(name, birth));
+                System.out.println();
+                System.out.println(name + " добавлен в ваш питомник!\n");
+                break;
+            }
+            case "6": {
+                packAnimals.addNewPackAnimal(new Horse(name, birth));
+                System.out.println();
+                System.out.println(name + " добавлен в ваш питомник!\n");
+                break;
+            }
+            default: {
+                System.out.println();
+                System.out.println(type + " - Такая категория не существует\n");
             }
         }
 
 
-
     }
+    //endregion
+
+    //region printAllAnimals
+    public void printAllAnimals() {
+
+        System.out.println("\n----Домашние животные----\n");
+        pets.printAll();
+        System.out.println("----Вьючные животные----\n");
+        packAnimals.printAll();
+    }
+    //endregion
+
+    //region PrintCommands
+    public void printCommands(String type, String name) {
+        switch (type) {
+            case "1": {
+                boolean flag = false;
+                for (Pets animal : pets.getListAnimal()) {
+                    if (animal instanceof Dogs && animal.toString().contains(name)) {
+                        Dogs dog = (Dogs) animal;
+                        dog.printAllCommands();
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+            case "2": {
+                boolean flag = false;
+                for (Pets animal : pets.getListAnimal()) {
+                    if (animal instanceof Cats && animal.toString().contains(name)) {
+                        Cats cat = (Cats) animal;
+                        cat.printAllCommands();
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+            case "3": {
+                boolean flag = false;
+                for (Pets animal : pets.getListAnimal()) {
+                    if (animal instanceof Hamsters && animal.toString().contains(name)) {
+                        Hamsters hamsters = (Hamsters) animal;
+                        hamsters.printAllCommands();
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+            case "4": {
+                boolean flag = false;
+                for (PackAnimals animal : packAnimals.getListAnimal()) {
+                    if (animal instanceof Camels && animal.toString().contains(name)) {
+                        Camels camels = (Camels) animal;
+                        camels.printAllCommands();
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+            case "5": {
+                boolean flag = false;
+                for (PackAnimals animal : packAnimals.getListAnimal()) {
+                    if (animal instanceof Donkeys && animal.toString().contains(name)) {
+                        Donkeys donkeys = (Donkeys) animal;
+                        donkeys.printAllCommands();
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+            case "6": {
+                boolean flag = false;
+                for (PackAnimals animal : packAnimals.getListAnimal()) {
+                    if (animal instanceof Horse && animal.toString().contains(name)) {
+                        Horse horse = (Horse) animal;
+                        horse.printAllCommands();
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+
+            default: {
+                System.out.println();
+                System.out.println(type + " - Такая категория не существует\n");
+            }
+
+        }
+    }
+    //endregion
+
+    //region newCommand
+
+    public void newComand(String type, String name, String newCommand){
+        switch (type) {
+            case "1": {
+                boolean flag = false;
+                for (Pets animal : pets.getListAnimal()) {
+                    if (animal instanceof Dogs && animal.toString().contains(name)) {
+                        Dogs dog = (Dogs) animal;
+                        dog.addCommand(newCommand);
+                        System.out.println("\nКоманда " + newCommand + " успешно добавлена!\n");
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+            case "2": {
+                boolean flag = false;
+                for (Pets animal : pets.getListAnimal()) {
+                    if (animal instanceof Cats && animal.toString().contains(name)) {
+                        Cats cat = (Cats) animal;
+                        cat.addCommand(newCommand);
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+            case "3": {
+                boolean flag = false;
+                for (Pets animal : pets.getListAnimal()) {
+                    if (animal instanceof Hamsters && animal.toString().contains(name)) {
+                        Hamsters hamsters = (Hamsters) animal;
+                        hamsters.addCommand(newCommand);
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+            case "4": {
+                boolean flag = false;
+                for (PackAnimals animal : packAnimals.getListAnimal()) {
+                    if (animal instanceof Camels && animal.toString().contains(name)) {
+                        Camels camels = (Camels) animal;
+                        camels.addCommand(newCommand);
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+            case "5": {
+                boolean flag = false;
+                for (PackAnimals animal : packAnimals.getListAnimal()) {
+                    if (animal instanceof Donkeys && animal.toString().contains(name)) {
+                        Donkeys donkeys = (Donkeys) animal;
+                        donkeys.addCommand(newCommand);
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+            case "6": {
+                boolean flag = false;
+                for (PackAnimals animal : packAnimals.getListAnimal()) {
+                    if (animal instanceof Horse && animal.toString().contains(name)) {
+                        Horse horse = (Horse) animal;
+                        horse.addCommand(newCommand);
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("\nЖивотное не найдено!\n");
+                }
+                break;
+            }
+
+            default: {
+                System.out.println();
+                System.out.println(type + " - Такая категория не существует\n");
+            }
+
+        }
+    }
+
+    //endregion
+
     //endregion
 }
