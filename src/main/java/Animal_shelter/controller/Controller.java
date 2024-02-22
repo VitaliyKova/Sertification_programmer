@@ -8,6 +8,7 @@ public class Controller {
     //region fields
     PackAnimals packAnimals = new PackAnimals();
     Pets pets = new Pets();
+
     //endregion
 
     //region constructor
@@ -20,55 +21,43 @@ public class Controller {
     //region Methods
 
     //region MethodAddAnimals
-    public void addAnimals(String type, String name, String birth) {      /* 1 -> СОБАКА
+    public void addAnimals(String type, String name, String birth) throws Exception {      /* 1 -> СОБАКА
                                                                             2 -> КОТ
                                                                             3 -> ХОМЯК
                                                                             4 -> ВЕРБЛЮД
                                                                             5 -> ОСЁЛ
                                                                             6 -> ЛОШАДЬ */
-        switch (type) {
-            case "1": {
-                pets.addNewPetAnimal(new Dogs(name, birth));
-                System.out.println();
-                System.out.println(name + " добавлен в ваш питомник!\n");
-                break;
+        try(Count count = new Count()){
+            count.add(name,birth);
+            switch (type) {
+                case "1":
+                    pets.addNewPetAnimal(new Dogs(name, birth));
+                    break;
+                case "2":
+                    pets.addNewPetAnimal(new Cats(name, birth));
+                    break;
+                case "3":
+                    pets.addNewPetAnimal(new Hamsters(name, birth));
+                    break;
+                case "4":
+                    packAnimals.addNewPackAnimal(new Camels(name, birth));
+                    break;
+                case "5":
+                    packAnimals.addNewPackAnimal(new Donkeys(name, birth));
+                    break;
+                case "6":
+                    packAnimals.addNewPackAnimal(new Horse(name, birth));
+                    break;
+                default: {
+                    System.out.println();
+                    System.out.println(type + " - Такая категория не существует\n");
+                    return;
+                }
             }
-            case "2": {
-                pets.addNewPetAnimal(new Cats(name, birth));
-                System.out.println();
-                System.out.println(name + " добавлен в ваш питомник!\n");
-                break;
-            }
-            case "3": {
-                pets.addNewPetAnimal(new Hamsters(name, birth));
-                System.out.println();
-                System.out.println(name + " добавлен в ваш питомник!\n");
-                break;
-            }
-            case "4": {
-                packAnimals.addNewPackAnimal(new Camels(name, birth));
-                System.out.println();
-                System.out.println(name + " добавлен в ваш питомник!\n");
-                break;
-            }
-            case "5": {
-                packAnimals.addNewPackAnimal(new Donkeys(name, birth));
-                System.out.println();
-                System.out.println(name + " добавлен в ваш питомник!\n");
-                break;
-            }
-            case "6": {
-                packAnimals.addNewPackAnimal(new Horse(name, birth));
-                System.out.println();
-                System.out.println(name + " добавлен в ваш питомник!\n");
-                break;
-            }
-            default: {
-                System.out.println();
-                System.out.println(type + " - Такая категория не существует\n");
-            }
+            System.out.println();
+            System.out.println('\n' + name + " добавлен в ваш питомник!\n" +
+                               "Ему присвоен номер -> " + count.getInstanceCount() + '\n');
         }
-
 
     }
     //endregion
@@ -190,7 +179,6 @@ public class Controller {
                     if (animal instanceof Dogs && animal.toString().contains(name)) {
                         Dogs dog = (Dogs) animal;
                         dog.addCommand(newCommand);
-                        System.out.println("\nКоманда " + newCommand + " успешно добавлена!\n");
                         flag = true;
                     }
                 }
@@ -273,9 +261,10 @@ public class Controller {
             default: {
                 System.out.println();
                 System.out.println(type + " - Такая категория не существует\n");
+                return;
             }
-
         }
+        System.out.println("\nКоманда " + newCommand + " успешно добавлена!\n");
     }
 
     //endregion

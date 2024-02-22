@@ -18,33 +18,15 @@ public class View {
 
     //region Requests
     private String inputName(){
-        boolean flag = true;
-        while (flag) {
             System.out.print("\nВведите кличку животного: ");
             String value = scanner.nextLine();
-            if (value.isEmpty()) {
-                System.out.println("\nВы ничего не ввели!\n");
-            } else {
-                flag = false;
-                return value;
-            }
-        }
-        return null;
+            return value;
     }
 
     private String inputDateOfBirth() {
-        boolean flag = true;
-        while (flag) {
             System.out.print("\nВведите дату рождения животного: ");
             String value = scanner.nextLine();
-            if (value.isEmpty()) {
-                System.out.println("\nВы ничего не ввели!\n");
-            } else {
-                flag = false;
-                return value;
-            }
-        }
-        return null;
+            return value;
     }
 
     private String inputNewCommands(){
@@ -100,7 +82,11 @@ public class View {
                     boolean flagIn = result.equals("7");
                     if(flagIn) break;
                     else {
-                        controller.addAnimals(result,inputName(),inputDateOfBirth());
+                        try {
+                            controller.addAnimals(result,inputName(),inputDateOfBirth());
+                        } catch (Exception e) {
+                            System.out.println("\nКличка и дата рождения не могут быть пустыми!\n");
+                        }
                     }
                     break;
                 }
