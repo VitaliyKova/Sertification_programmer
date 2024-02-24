@@ -1,0 +1,40 @@
+1  cat > "Домашние животные"
+
+    2  cat > "Вьючные животные"
+
+    3  cat "Домашние животные" "Вьючные животные" > "Друзья человека"
+
+    4  cat "Друзья человека"
+
+    5  mv "Друзья человека" "Friends_of_Humans"
+
+    6  sudo mkdir my_animals
+
+    7  mv "Friends_of_Humans" /my_animals
+
+    8  sudo mv "Friends_of_Humans" /my_animals
+
+    9  sudo wget -c https://dev.mysql.com/get/mysql-apt-config_0.8.16-1_all.deb
+
+   10  sudo dpkg -i mysql-apt-config_0.8.16-1_all.deb
+
+   11  sudo apt update
+
+   12  sudo apt-get install mysql-server
+
+   13  sudo ls -l
+
+   14  cd /Загрузки
+
+   15  cd Загрузки
+
+   16  sudo ls -l
+
+   17  sudo dpkg -i putty_0.80-1_i386.deb
+
+   18  sudo apt install -f
+
+   19  sudo dpkg -l | grep putty 
+
+   20  sudo dpkg -r putty:i386
+
