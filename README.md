@@ -12,16 +12,20 @@
 из этого репозитория.
 4. Установить и удалить deb-пакет с помощью dpkg.
 5. Выложить историю команд в терминале ubuntu
-## Решение
-[История из терминала Linux](https://github.com/VitaliyKova/Sertification_programmer/blob/master/ubuntu_hitory_commands.txt)
+   
+## Решение :heavy_check_mark:
+
+:point_right: [История из терминала Linux](https://github.com/VitaliyKova/Sertification_programmer/blob/master/ubuntu_hitory_commands.txt) :point_left:
 
 ## Задание 2
 Нарисовать диаграмму, в которой есть класс родительский класс, домашние
 животные и вьючные животные, в составы которых в случае домашних
 животных войдут классы: собаки, кошки, хомяки, а в класс вьючные животные
 войдут: Лошади, верблюды и ослы).
-## Решение
-[Ссылка на файл с диаграммой](https://github.com/VitaliyKova/Sertification_programmer/blob/master/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0.pdf)
+
+## Решение :heavy_check_mark:
+
+:point_right: [Ссылка на файл с диаграммой](https://github.com/VitaliyKova/Sertification_programmer/blob/master/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0.pdf) :point_left:
 
 ![image](https://github.com/VitaliyKova/Sertification_programmer/assets/130704718/aefb0204-5918-46d9-9a29-ae07fe5888f5)
 
@@ -57,7 +61,7 @@
 типа счетчик была не в ресурсном try и/или ресурс остался открыт. Значение
 считать в ресурсе try, если при заведения животного заполнены все поля.
 
-## Решение
+## Решение :heavy_check_mark:
 
-[Ссылка на папку с программой](https://github.com/VitaliyKova/Sertification_programmer/tree/master/src/main/java/Animal_shelter)
+:point_right: [Ссылка на папку с программой](https://github.com/VitaliyKova/Sertification_programmer/tree/master/src/main/java/Animal_shelter) :point_left:
 
