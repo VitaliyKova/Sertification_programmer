@@ -28,7 +28,6 @@ public class Controller {
                                                                             5 -> ОСЁЛ
                                                                             6 -> ЛОШАДЬ */
         try(Count count = new Count()){
-            count.add(name,birth);
             switch (type) {
                 case "1":
                     pets.addNewPetAnimal(new Dogs(name, birth));
@@ -54,6 +53,7 @@ public class Controller {
                     return;
                 }
             }
+            count.add(name,birth);
             System.out.println();
             System.out.println('\n' + name + " добавлен в ваш питомник!\n" +
                                "Ему присвоен номер -> " + count.getInstanceCount() + '\n');
