@@ -44,6 +44,9 @@
 12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на
 прошлую принадлежность к старым таблицам.
 
+## Решение :heavy_check_mark:
+:point_right: [Ссылка на скрипт MySQL](https://github.com/VitaliyKova/Sertification_programmer/blob/master/animals.sql) :point_left:
+
 ## Задание 4
 
 13.Создать класс с Инкапсуляцией методов и наследованием по диаграмме.\
